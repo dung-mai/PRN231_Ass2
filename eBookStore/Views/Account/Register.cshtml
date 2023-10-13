@@ -1,0 +1,146 @@
+﻿@model BusinessObject.DTO.UserCreateDTO
+@{
+    Layout = null;
+}
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Đăng ký</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/css/mdb.min.css" rel="stylesheet">
+    <script type="text/javascript" src="~/js/mdb.min.js"></script>
+</head>
+
+<section class="background-radial-gradient overflow-hidden">
+    <style>
+        .background-radial-gradient {
+            background-color: hsl(218, 41%, 15%);
+            background-image: radial-gradient(650px circle at 0% 0%, hsl(218, 41%, 35%) 15%, hsl(218, 41%, 30%) 35%, hsl(218, 41%, 20%) 75%, hsl(218, 41%, 19%) 80%, transparent 100%), radial-gradient(1250px circle at 100% 100%, hsl(218, 41%, 45%) 15%, hsl(218, 41%, 30%) 35%, hsl(218, 41%, 20%) 75%, hsl(218, 41%, 19%) 80%, transparent 100%);
+        }
+
+        #radius-shape-1 {
+            height: 220px;
+            width: 220px;
+            top: -60px;
+            left: -130px;
+            background: radial-gradient(#44006b, #ad1fff);
+            overflow: hidden;
+        }
+
+        #radius-shape-2 {
+            border-radius: 38% 62% 63% 37% / 70% 33% 67% 30%;
+            bottom: -60px;
+            right: -110px;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(#44006b, #ad1fff);
+            overflow: hidden;
+        }
+
+        .bg-glass {
+            background-color: hsla(0, 0%, 100%, 0.9) !important;
+            backdrop-filter: saturate(200%) blur(25px);
+        }
+    </style>
+
+    <div class="container px-4 py-5 px-md-5 text-center text-lg-start my-5">
+        <div class="row gx-lg-5 align-items-center mb-5">
+            <div class="offset-lg-1 col-lg-5 mb-5 mb-lg-0" style="z-index: 10; height:455px">
+                <img src="~/img/logo.png" alt="logo" style="height: 100%" />
+            </div>
+
+            <div class="col-lg-5 mb-5 mb-lg-0 position-relative">
+                <div id="radius-shape-1" class="position-absolute rounded-circle shadow-5-strong"></div>
+                <div id="radius-shape-2" class="position-absolute shadow-5-strong"></div>
+
+                <div class="card bg-glass">
+                    <div class="card-body px-4 px-md-5">
+                        <h2 class="my-3 display-6 fw-bold ls-tight" style="color: blue">
+                            Book store
+                            <span style="color: hsl(218, 81%, 75%)">Register</span>
+                        </h2>
+
+                        <div class="message text-danger">
+                            @TempData["error"]
+                        </div>
+
+                        @*                        <form method="post">
+                        <!-- Email input -->
+                        <div class="form-outline border mb-4">
+                        <input type="email" id="form3Example3" class="form-control" name="email" placeholder="email address" />
+                        </div>
+
+                        <!-- Password input -->
+                        <div class="form-outline border mb-4">
+                        <input type="password" id="form3Example4" class="form-control" name="password" placeholder="password" />
+                        </div>
+
+                        <!-- Password input -->
+                        <div class="form-outline border mb-4">
+                        <input type="password" id="form3Example4" class="form-control" name="confirm password" placeholder="password" />
+                        </div>*@
+
+                        <form asp-controller="Account" asp-action="Register" method="post">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <div class="form-group d-flex align-items-center my-1">
+                                <label asp-for="FirstName" class="control-label w-25 mr-1"></label>
+                                <input asp-for="FirstName" class="form-control" />
+                                <span asp-validation-for="FirstName" class="text-danger"></span>
+                            </div>
+                            <div class="form-group d-flex align-items-center my-1">
+                                <label asp-for="MiddleName" class="control-label w-25 mr-1">Middle</label>
+                                <input asp-for="MiddleName" class="form-control" />
+                                <span asp-validation-for="MiddleName" class="text-danger"></span>
+                            </div>
+                            <div class="form-group d-flex align-items-center my-1">
+                                <label asp-for="LastName" class="control-label w-25 mr-1"></label>
+                                <input asp-for="LastName" class="form-control" />
+                                <span asp-validation-for="LastName" class="text-danger"></span>
+                            </div>
+                            <div class="form-group d-flex align-items-center my-1">
+                                <label asp-for="Email" class="control-label w-25 mr-1"></label>
+                                <input asp-for="Email" class="form-control" />
+                                <span asp-validation-for="Email" class="text-danger"></span>
+                            </div>
+                            <div class="form-group d-flex align-items-center my-1">
+                                <label asp-for="Password" class="control-label w-25 mr-1"></label>
+                                <input asp-for="Password" class="form-control" type="password" />
+                                <span asp-validation-for="Password" class="text-danger"></span>
+                            </div>
+                            <div class="form-group d-flex align-items-center my-1">
+                                <label asp-for="Source" class="control-label w-25 mr-1"></label>
+                                <input asp-for="Source" class="form-control" />
+                                <span asp-validation-for="Source" class="text-danger"></span>
+                            </div>
+                            <div class="form-group d-flex align-items-center my-1">
+                                <label asp-for="PubId" class="control-label w-25 mr-1"></label>
+                                <select asp-for="PubId" class="form-control" asp-items="ViewBag.PubId"></select>
+                                <span asp-validation-for="PubId" class="text-danger"></span>
+                            </div>
+                            <div class="form-group d-flex align-items-center my-1">
+                                <label asp-for="HireDate" class="control-label w-25 mr-1"></label>
+                                <input asp-for="HireDate" class="form-control" type="date" />
+                                <span asp-validation-for="HireDate" class="text-danger"></span>
+                            </div>
+                            <!-- Submit button -->
+                            <button type="submit" class="btn btn-primary btn-block mb-4 my-1">
+                                Đăng ký
+                            </button>
+                        </form>
+                        <a href="/login">Already an user?</a>
+
+                        <!-- Register buttons -->
+                        <div class="text-center">
+                            @*                                    <button type="button" class="btn btn-link btn-floating mx-1">
+                            <i class="fab fa-google"></i>
+                            </button>*@
+                        </div>
+                        @*</form>*@
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
